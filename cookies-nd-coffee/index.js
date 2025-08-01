@@ -1,6 +1,7 @@
 // Import express
 import express from "express"
 import cookiesRouter from "./routes/cookiesRoutes.js"
+import errorMiddleware from "./middlewares/errorMiddleware.js"
 // create express app 
 const expressApp = express()
 
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 3000
 
 expressApp.use(express.json());
 expressApp.use(express.urlencoded({ extended: true }));
+expressApp.use(errorMiddleware)
 expressApp.use("/api/cookies/", cookiesRouter)
 
 // expressApp.get("/cookie", (req, res) => {

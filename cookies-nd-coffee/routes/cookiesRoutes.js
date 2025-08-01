@@ -1,4 +1,5 @@
 import {Router} from "express"
+import errorMiddleware from "../middlewares/errorMiddleware.js"
 
 import { getACookie, addACookie, getAllCookies, updateACookie, deleteACookie } from "../controllers/cookiesController.js"
 

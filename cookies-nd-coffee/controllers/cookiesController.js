@@ -1,6 +1,7 @@
 import Cookie from "../models/Cookie.js";
 import DBConnection from "../config/DBConfig.js";
 
+
 DBConnection(process.env.DATABASE_NAME)
 
 const getAllCookies = async (req, res, next) => {
@@ -9,7 +10,7 @@ const getAllCookies = async (req, res, next) => {
         if(allCookies.length > 0) res.status(200).json(allCookies)
         else res.status(400).json()
     }catch(err){
-        console.error(err);
+        console.error(err)
     }
 }
 
@@ -21,22 +22,21 @@ const getACookie = async (req, res, next) => {
         else res.status(404).json()
         next()
     }catch(err){
-        console.error(err);
+        console.error(err)
     }
 }
 
 const addACookie = async (req, res, next) => {
     try{
-        console.log(req.body)
-        // const cookie = new Cookie(req.body)
-        const cookieToBeAdded = await task.save()
+        const cookieToBeAdded = new Cookie(req.body)
+        cookieToBeAdded.save()
         if(cookieToBeAdded) {
             res.status(200).json(cookieToBeAdded);
         }
-        else res.status(404).end();
+        else res.status(404).json();
         next()
     }catch(error){
-        console.log(error);
+        console.log(error)
     }
 }
 
@@ -49,7 +49,7 @@ const updateACookie = async (req, res, next) => {
         if(cookieToBeUpdated) res.status(200).json(cookieToBeUpdated)
         else res.status(400).json()
     }catch(err){
-        console.error(err);
+        console.error(err)
     }
 }
 
@@ -59,7 +59,7 @@ const deleteACookie = async (req, res, next) => {
         if(cookieToBeDeleted) res.status(200).json(cookieToBeDeleted)
         else res.status(400).json()
     }catch(err){
-        console.error(err);
+        console.error(err)
     }
 }
 

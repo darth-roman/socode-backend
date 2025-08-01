@@ -14,5 +14,5 @@ const cookieSchema = new Schema({
     }
 })
 
-const Cookie = model('Task', cookieSchema);
+const Cookie = model('Cookie', cookieSchema);
 export default Cookie
