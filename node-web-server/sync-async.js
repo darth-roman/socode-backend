@@ -1,3 +1,6 @@
+import {request} from "http"
+
+
 async function fetchSomeQuotes(){
     const response =  await fetch("https://dummyjson.com/users")
     const data = await response.json()

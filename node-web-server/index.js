@@ -14,7 +14,9 @@ const PORT = 3001
 // }
 
 const server = createServer((request, response) => {
-    const url = request.url;
+    const {url, method, headers} = request;
+    console.log(method);
+    
     response.setHeader("Content-Type", "application/json")
     switch(url){
         case "/coffee":
