@@ -5,7 +5,7 @@ import cookiesRouter from "./routes/cookiesRoutes.js"
 const expressApp = express()
 
 // create a PORT value and get it from .env file
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 // invoke the HTTP method
 // expressApp.get("/", (req, res) => {
@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000
 
 expressApp.use(express.json());
 expressApp.use(express.urlencoded({ extended: true }));
-expressApp.use("/api/cookies/", cookiesRouter)
+expressApp.use("/cookies/", cookiesRouter)
 
 // expressApp.get("/cookie", (req, res) => {
 //     res.send("<h1>Hello World</h1>")
