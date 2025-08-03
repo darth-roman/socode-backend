@@ -16,6 +16,8 @@ const PORT = 3001
 const server = createServer((request, response) => {
     const {url, method, headers} = request;
     console.log(method);
+    console.log(url);
+    
     
     response.setHeader("Content-Type", "application/json")
     switch(url){
