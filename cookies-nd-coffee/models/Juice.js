@@ -1,5 +1,10 @@
 import { Schema, model } from "mongoose";
 
+
+const options = {
+    timestamps: true
+}
+
 const juiceSchema = new Schema({
     name:{
         type: String,
@@ -13,9 +18,7 @@ const juiceSchema = new Schema({
         type: [String],
         required: true
     },
-}, {
-    timestamps: true
-})
+}, options)
 
 const Juice = model("Juice", juiceSchema)
 

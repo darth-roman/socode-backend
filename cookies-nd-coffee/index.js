@@ -8,7 +8,7 @@ import juiceRouter from "./routes/juiceRoutes.js"
 const expressApp = express()
 
 // create a PORT value and get it from .env file
-const PORT = 3002
+const PORT = 3000
 
 // invoke the HTTP method
 // expressApp.get("/", (req, res) => {
