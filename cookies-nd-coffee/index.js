@@ -3,7 +3,7 @@ import express from "express"
 import cookiesRouter from "./routes/cookieRoutes.js"
 import coffeeRouter from "./routes/coffeeRoutes.js"
 import juiceRouter from "./routes/juiceRoutes.js"
-
+import userRouter from "./routes/userRoutes.js"
 // create express app 
 const expressApp = express()
 
@@ -17,6 +17,7 @@ const PORT = 3000
 
 expressApp.use(express.json());
 expressApp.use(express.urlencoded({ extended: true }));
+expressApp.use("/api/users", userRouter)
 expressApp.use("/api/cookies", cookiesRouter)
 expressApp.use("/api/coffees", coffeeRouter)
 expressApp.use("/api/juices", juiceRouter)
