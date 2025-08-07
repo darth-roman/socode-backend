@@ -1,11 +1,14 @@
 // Import express
 import express from "express"
-import cookiesRouter from "./routes/cookiesRoutes.js"
+import cookiesRouter from "./routes/cookieRoutes.js"
+import coffeeRouter from "./routes/coffeeRoutes.js"
+import juiceRouter from "./routes/juiceRoutes.js"
+
 // create express app 
 const expressApp = express()
 
 // create a PORT value and get it from .env file
-const PORT = process.env.PORT || 3001
+const PORT = 3002
 
 // invoke the HTTP method
 // expressApp.get("/", (req, res) => {
@@ -14,7 +17,10 @@ const PORT = process.env.PORT || 3001
 
 expressApp.use(express.json());
 expressApp.use(express.urlencoded({ extended: true }));
-expressApp.use("/cookies/", cookiesRouter)
+expressApp.use("/api/cookies", cookiesRouter)
+expressApp.use("/api/coffees", coffeeRouter)
+expressApp.use("/api/juices", juiceRouter)
+
 
 // expressApp.get("/cookie", (req, res) => {
 //     res.send("<h1>Hello World</h1>")

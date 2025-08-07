@@ -1,6 +1,6 @@
-import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
-const cookieSchema = new Schema({
+const cookieSchema = mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -9,10 +9,12 @@ const cookieSchema = new Schema({
         type: Number,
         required: true
     },
-    image: {
-        type: String,
+    ingredients: {
+        type: [String],
+        required: false
     }
 })
 
-const Cookie = model('Task', cookieSchema);
+const Cookie = mongoose.model("Cookie", cookieSchema)
+
 export default Cookie
