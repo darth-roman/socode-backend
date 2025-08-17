@@ -25,11 +25,23 @@ const userSchema = Schema({
     }
 }, schemaOptions)
 
+// userSchema.pre("save", function(next){
+//     const user = this
+//     if(!user.isModified("password")) return next()
+//     bcrypt.genSalt(10, (err, salt) => {
+//         if(err) return next(err)
+//         bcrypt.hash(user.password, salt, (err, hash) => {
+//             user.password = hash
+//             next()
+//         })
+//     })
+// })
+
 userSchema.pre("save", function(next){
     const user = this
     if(!user.isModified("password")) return next()
-    bcrypt.genSalt(10, (err, salt) => {
-        if(err) return next(err)
+    bcrypt.genSalt(9, (err, salt) => {
+        if(err) return next()
         bcrypt.hash(user.password, salt, (err, hash) => {
             user.password = hash
             next()
@@ -37,17 +49,29 @@ userSchema.pre("save", function(next){
     })
 })
 
-userSchema.statics.login = async function(email, password){
+// userSchema.statics.login = async function(email, password){
+//     const user = await this.findOne({email})
+//     if(user) {
+//         const auth = await bcrypt.compare(password, user.password)
+//         if(auth) return user
+//         throw Error("Invalid Password")
+//     }
+
+//     throw Error("Invalid Email")
+
+// }
+
+userSchema.statics.login = async function (email, password) {
     const user = await this.findOne({email})
     if(user) {
-        const auth = await bcrypt.compare(password, user.password)
-        if(auth) return user
-        throw Error("Invalid Password")
+        const isAuth = await bcrypt.compare(password, user.password)
+        if(isAuth) return user
+        throw Error("Wrong Password")
     }
-
-    throw Error("Invalid Email")
-
+    throw Error("Invalid user")
 }
+
+
 
 const User = model("User", userSchema)
 export default User

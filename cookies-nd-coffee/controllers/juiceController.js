@@ -1,7 +1,7 @@
 import Juice from "../models/Juice.js";
-import DBConnection from "../config/DBConfig.js";
+// import DBConnection from "../config/DBConfig.js";
 
-DBConnection(process.env.DATABASE_NAME)
+// DBConnection(process.env.DATABASE_NAME)
 
 
 const addAJuice = async (req, res, next) => {

@@ -4,12 +4,12 @@ import {
     getOneUserById,
     updateOneUserById,
     deleteOneUserById,
-    addAUser,
-    loginUser
+    addAUser
 } from "../controllers/userController.js"
+import { requiredAuth } from "../middlewares/authMiddleware.js";
 
 const userRouter = Router()
-userRouter.post("/login", loginUser)
+// userRouter.post("/login", loginUser)
 userRouter.get("/", getAllUsers)
 userRouter.get("/:id", getOneUserById)
 userRouter.post("/add", addAUser)

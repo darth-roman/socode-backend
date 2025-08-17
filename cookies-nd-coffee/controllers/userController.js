@@ -1,14 +1,18 @@
-import DBConnection from "../config/DBConfig.js";
 import User from "../models/User.js";
+// import jwt from "jsonwebtoken"
 
-DBConnection(process.env.DATABASE_NAME)
 
 const addAUser = async (req, res, next) => {
     try {
         const newUser = new User(req.body)
         const addedUser = await newUser.save()
-        if(addedUser) res.status(201).json(addedUser)
-        else res.status(500).json({message: "Could NOT add a user"})
+        if(addedUser) {
+            res.status(201).json(addedUser)
+            // res.render("auth/login")
+        }
+        else {
+            res.status(500).json({message: "Could NOT add a user"})
+        }
 
         next()
 } catch (error) {
@@ -57,8 +61,6 @@ const deleteOneUserById = async (req, res, next) => {
         
     }
 }
-
-
 const updateOneUserById = async (req, res, next) => {
     try {
         const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body)
@@ -71,16 +73,21 @@ const updateOneUserById = async (req, res, next) => {
     }
 }
 
-const loginUser = async (req, res, next) => {
-    const {email, password} = req.body
+// const loginUser = async (req, res, next) => {
+//     const {email, password} = req.body
 
-    try{
-        const user = await User.login(email, password)
-        res.status(200).json({user: user, message: "Logged In"})
-    }catch(err) {
-        console.error(err);
-    }
-}
+//     try{
+//         const user = await User.login(email, password)
+//         res.status(200).json({user: user, message: "Logged In"})
+//         next()
+//     }catch(err) {
+//         console.error(err);
+//     }
+// }
+
+
+
+
 
 export {
     addAUser,
@@ -88,5 +95,4 @@ export {
     getOneUserById,
     deleteOneUserById,
     updateOneUserById,
-    loginUser
 }

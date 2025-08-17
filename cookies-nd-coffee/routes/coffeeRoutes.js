@@ -8,6 +8,7 @@ import {
     getCoffeeByOrigin
 } from "../controllers/coffeeController.js"
 
+
 const coffeeRouter = Router()
 
 coffeeRouter.get("/", getAllCoffees)

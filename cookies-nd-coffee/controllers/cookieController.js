@@ -1,9 +1,9 @@
-import DBConnection from "../config/DBConfig.js";
+// import DBConnection from "../config/DBConfig.js";
 import Cookie from "../models/Cookie.js"
-import dotenv from "dotenv"
-dotenv.config()
+// import dotenv from "dotenv"
+// dotenv.config()
 
-DBConnection(process.env.DATABASE_NAME)
+// DBConnection(process.env.DATABASE_NAME)
 
 
 async function getAllCookies(req, res) {

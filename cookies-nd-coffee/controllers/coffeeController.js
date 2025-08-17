@@ -1,8 +1,8 @@
-import DBConnection from "../config/DBConfig.js";
+// import DBConnection from "../config/DBConfig.js";
 import Coffee from "../models/Coffee.js";
 
 // Connecting to Database
-DBConnection(process.env.DATABASE_NAME)
+// DBConnection(process.env.DATABASE_NAME)
 
 // CRUD Functions
 
@@ -25,6 +25,7 @@ const addACoffee = async (req, res, next) => {
 const getAllCoffees = async (req, res, next) => {
     try {
         const allCoffees = await Coffee.find({})
+        if(allCoffees.length <= 0) res.status(200).json({message: "No Coffees Yet"})
         if(allCoffees.length > 0) res.status(200).json(allCoffees)
         else res.status(500).json()
         next()
